@@ -8,16 +8,15 @@ var settings = {
 try {
   var savedValue = localStorage.getItem(storageKey);
   if (savedValue) {
-    settings = JSON.parse(savedValue);
+    var savedSettings = JSON.parse(savedValue);
+    if (savedSettings && savedSettings.theme === "dark") {
+      settings.theme = "dark";
+    }
   }
 } catch (error) {
   settings = {
     theme: "light"
   };
-}
-
-if (settings.theme !== "dark") {
-  settings.theme = "light";
 }
 
 var menuButton = document.getElementById("menuToggle");

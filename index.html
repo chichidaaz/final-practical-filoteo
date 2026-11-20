@@ -8,13 +8,13 @@
     try {
       var savedSettings = localStorage.getItem("portfolioSettings");
       if (savedSettings) {
-        var settings = JSON.parse(savedSettings);
-        if (settings.theme === "dark") {
-          document.documentElement.className = "dark-theme";
+        var earlySettings = JSON.parse(savedSettings);
+        if (earlySettings && earlySettings.theme === "dark") {
+          document.documentElement.classList.add("dark-theme");
         }
       }
     } catch (error) {
-      document.documentElement.className = "";
+      document.documentElement.classList.remove("dark-theme");
     }
   </script>
   <link rel="stylesheet" href="css.css">
